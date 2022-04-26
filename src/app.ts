@@ -21,8 +21,8 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 });
 
-app.get('/friends', (req, res) => {
-    res.json({})
+app.get('/friends', jwt.authenticate(), (req, res) => {
+    res.json({ message: 'secret friends!'})
 })
 
 app.post('/friends', (req, res) => {
