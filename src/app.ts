@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import passportRouter from './config/passport'
 import userRouter from './routes/users'
 import passportJWT from './config/passport-jwt'
+import cors from 'cors'
 
 const jwt = passportJWT()
 
@@ -11,6 +12,7 @@ const port = 3000;
 
 mongoose.connect('mongodb://localhost:27017/myapp');
 
+app.use(cors())
 app.use(express.json())
 app.use(express.static('public'))
 app.use(jwt.initialize())
