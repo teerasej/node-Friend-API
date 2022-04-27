@@ -13,6 +13,21 @@ router.post('/users/register', async (req, res) => {
     res.json(result)
 })
 
+router.post('/users/search', async (req, res) => {
+    const keyword = req.body.keyword
+    const users = await User.find({ "username": { $regex: keyword } })
+    
+    const result = users.map(item => {
+        return { 
+            _id: item._id, 
+            username: item.username,
+            profileImagePath: item.profileImagePath
+        }
+    })
+    console.log(result)
+    res.json(result)
+})
+
 router.post('/users/signin', passport.authenticate('local'), async (req, res) => {
     const signinInUser = req.body
 
