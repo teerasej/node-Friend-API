@@ -2,4 +2,4 @@ FROM mongo
 
 
 COPY initdb.sh /docker-entrypoint-initdb.d/
-COPY friends.json /docker-entrypoint-initdb.d/
+COPY data.json /docker-entrypoint-initdb.d/

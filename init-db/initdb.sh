@@ -1,1 +1,1 @@
-mongoimport --host localhost --db friendAPI --collection friends --type json --file /docker-entrypoint-initdb.d/friends.json --jsonArray
+mongoimport --host localhost --db myapp --collection users --type json --file /docker-entrypoint-initdb.d/data.json --jsonArray
