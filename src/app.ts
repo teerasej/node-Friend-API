@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from 'express';
 import mongoose from 'mongoose'
 import passportRouter from './config/passport'
@@ -8,9 +9,11 @@ import cors from 'cors'
 const jwt = passportJWT()
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT
 
-mongoose.connect('mongodb://localhost:27017/myapp');
+const mongoHost = process.env.MONGO_HOST
+const mongoPort = process.env.MONGO_PORT
+mongoose.connect(`mongodb://${mongoHost}:${mongoPort}/myapp`);
 
 app.use(cors())
 app.use(express.json())
