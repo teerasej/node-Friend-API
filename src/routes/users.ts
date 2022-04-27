@@ -14,8 +14,9 @@ router.post('/users/register', async (req, res) => {
 })
 
 router.post('/users/search', async (req, res) => {
-    const keyword = req.body.keyword
-    const users = await User.find({ "username": { $regex: keyword } })
+    const keyword:string = req.body.keyword
+    console.log('keyword:', keyword)
+    const users = await User.find({ "username": { $regex: keyword.toLowerCase(), $options:'i' } })
     
     const result = users.map(item => {
         return { 
